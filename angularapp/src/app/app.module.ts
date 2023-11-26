@@ -7,12 +7,14 @@ import { JobPostingFormComponent } from './job-posting-form/job-posting-form.com
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobApplicationsComponent } from './job-applications/job-applications.component';
+import { ViewJobApplicationsComponent } from './view-job-applications/view-job-applications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobPostingFormComponent,
-    JobApplicationsComponent
+    JobApplicationsComponent,
+    ViewJobApplicationsComponent
   ],
   imports: [
     BrowserModule,

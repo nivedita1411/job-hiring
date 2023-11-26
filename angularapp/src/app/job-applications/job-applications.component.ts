@@ -39,9 +39,13 @@ export class JobApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.jb.getJobPostings().subscribe((data:JobPosition[]) => {
+    this.jb.getJobPostings().subscribe((data:JobPosition[])=>{
+      console.log(data)
       this.jobPositions.push(...data)
+      // console.log(this.positions)
       console.log(this.jobPositions)
+      
+
     })
   }
 

@@ -39,8 +39,12 @@ export class JobService {
   }
   updateApplicationStatus(applicationId:number, applicantName:string,newStatus:string): Observable<any>
   {
-    return this.httpclient.put<any>(this.apiUrl + '/application/update/' + applicationId,this.httpOptions)
+    return this.httpclient.put<any>(this.apiUrl + '/application/update/' + applicationId,{applicantName:applicantName,status:newStatus},this.httpOptions)
   }
-  // markJobAsClosed()
-  // getTotalApplicantsByJobPositionId()
+  markJobAsClosed(jobId:number){
+ 
+  }
+  getTotalApplicantsByJobPositionId(jobPositionId:any):Observable<number>{
+    return this.httpclient.get<number>(`${this.apiUrl}/applications/by-job-position?jobPositionId=${jobPositionId}`)
+  }
 }

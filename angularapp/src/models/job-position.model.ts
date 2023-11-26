@@ -6,7 +6,8 @@ export interface JobPosition {
     department:string
     location:string
     responsibilities:string
+    qualifications:string
     applicationDeadline:Date
     isClosed:boolean
-    applications:JobApplication[]
+    applications:JobApplication[] 
 }

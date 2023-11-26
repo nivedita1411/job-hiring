@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../services/job.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,23 +10,25 @@ import { Router } from '@angular/router';
 })
 export class JobPostingFormComponent implements OnInit {
 
-  formData: any
+  
 
-  constructor(private jb : JobService, private fb : FormBuilder, private router = Router) { }
+  constructor(private jb : JobService, private fb : FormBuilder) { }
 
-  createForm = this.fb.group({
-    title : [''],
-    department: [''],
-    location : [''],
-    responsibilities : [''],
-    qualifications:[''],
-    applicationDeadline:['']
+  jobPosting: any
+
+  jobPostingForm = this.fb.group({
+    title : ['',Validators.required],
+    department: ['',Validators.required],
+    location : ['',Validators.required],
+    responsibilities : ['',Validators.required],
+    qualifications:['',Validators.required],
+    applicationDeadline:['',Validators.required]
   })
 
   submitJobPosting(){
-    this.formData = this.createForm.value
-    console.log(this.formData)
-    this.jb.createJobPosition(this.formData).subscribe(
+    this.jobPosting = this.jobPostingForm.value
+    console.log(this.jobPosting)
+    this.jb.createJobPosition(this.jobPosting).subscribe(
       ()=> {
         // this.router.navigate(['/'])
       }

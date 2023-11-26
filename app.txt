@@ -608,3 +608,38 @@ html:
     </div>
   </nav>
 
+import { Component, OnInit } from '@angular/core';
+import { JobService } from '../services/job.service';
+import { FormBuilder, Validators } from '@angular/forms';
+ 
+@Component({
+  selector: 'app-job-posting-form',
+  templateUrl: './job-posting-form.component.html',
+  styleUrls: ['./job-posting-form.component.css']
+})
+export class JobPostingFormComponent implements OnInit {
+ 
+  constructor(private ms : JobService, private fb : FormBuilder) { }
+ 
+  jobPosting : any
+ 
+  jobPostingForm = this.fb.group({
+    title : ['', Validators.required],
+    department : ['', Validators.required],
+    location : ['', Validators.required],
+    responsibilities : ['', Validators.required],
+    qualifications : ['', Validators.required],
+    applicationDeadline : ['', Validators.required]
+  })
+ 
+  submitJobPosting() {
+    this.jobPosting = this.jobPostingForm.value
+    this.ms.createJobPosition(this.jobPosting).subscribe(() => {
+      alert("Submitted")
+    })
+  }
+ 
+  ngOnInit(): void {
+  }
+ 
+}

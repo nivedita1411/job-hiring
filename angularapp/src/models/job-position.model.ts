@@ -7,7 +7,7 @@ export interface JobPosition {
     location:string
     responsibilities:string
     qualifications:string
-    applicationDeadline:Date
-    isClosed:boolean
-    applications:JobApplication[] 
+    isClosed:boolean;
+    applicationDeadline:Date;
+    applications:JobApplication[];
 }

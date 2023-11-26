@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { JobApplication } from 'src/models/job-application.model';
+import { JobPosition } from 'src/models/job-position.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,15 +21,26 @@ export class JobService {
   {
     return this.httpclient.get<any[]>(this.apiUrl + '/applications')
   }
-  httpOptions : {headers: ({'Content-type':'application/json'})}
-  createJobPosition(jobApplicationData : JobApplication) : Observable<any
-  // getPositionTitles()
+
+  getPositionTitles() : Observable<any[]>
+  {
+    return this.httpclient.get<any[]>(this.apiUrl + '/position_title')
+  }
+  httpOptions = {headers: new HttpHeaders ({'Content-type':'application/json'})}
+  createJobPosition(newJobPosition:JobPosition) : Observable<any>
+  {
+    return this.httpclient.post<any>(this.apiUrl + '/position/add',newJobPosition,this.httpOptions)
+  }
+  
   
   applyForJob(jobApplicationData : JobApplication) : Observable<any>
   {
-    return this.httpclient.
+    return this.httpclient.post<any>(this.apiUrl + '/application/add', jobApplicationData, this.httpOptions)
   }
-  // updateApplicationStatus()
+  updateApplicationStatus(applicationId:number, applicantName:string,newStatus:string): Observable<any>
+  {
+    return this.httpclient.put<any>(this.apiUrl + '/application/update/' + applicationId,this.httpOptions)
+  }
   // markJobAsClosed()
   // getTotalApplicantsByJobPositionId()
 }

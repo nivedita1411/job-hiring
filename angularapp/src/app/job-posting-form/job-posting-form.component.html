@@ -2,7 +2,7 @@
 <h2>Create Job Posting</h2>
 
 <div class="jumbotron container">
-    <form [FormGroup]="createForm" (ngSubmit)="submitJobPosting()">
+    <form [formGroup]="jobPostingForm" (ngSubmit)="submitJobPosting()">
         <label for="title">Job Title</label>
         <input id="title" >
 

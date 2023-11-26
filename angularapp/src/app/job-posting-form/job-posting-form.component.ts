@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../services/job.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-job-posting-form',
@@ -31,6 +31,7 @@ export class JobPostingFormComponent implements OnInit {
     this.jb.createJobPosition(this.jobPosting).subscribe(
       ()=> {
         // this.router.navigate(['/'])
+        alert("Submitted")
       }
     )
   }

@@ -643,3 +643,76 @@ export class JobPostingFormComponent implements OnInit {
   }
  
 }
+
+<!-- <p>job-posting-form works!</p> -->
+<h2>Create Job Posting</h2>
+
+<div class="jumbotron container">
+    <form [formGroup]="jobPostingForm" (ngSubmit)="submitJobPosting()">
+        <label for="title">Job Title</label>
+        <input id="title" >
+
+        <label for="department">Department</label>
+        <input id="department" >
+
+        <label for="location">Location</label>
+        <input id="location" >
+
+        <label for="responsibilities">Responsibilities</label>
+        <textarea id="responsibilities"></textarea>
+
+        <label for="qualifications">Qualifications</label>
+        <textarea id="qualifications"></textarea>
+
+        <label for="applicationDeadline">Application Deadline</label>
+        <input id="applicationDeadline" >
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+
+import { Component, OnInit } from '@angular/core';
+import { JobService } from '../services/job.service';
+import { FormBuilder, Validators } from '@angular/forms';
+
+
+@Component({
+  selector: 'app-job-posting-form',
+  templateUrl: './job-posting-form.component.html',
+  styleUrls: ['./job-posting-form.component.css']
+})
+export class JobPostingFormComponent implements OnInit {
+
+  
+
+  constructor(private jb : JobService, private fb : FormBuilder) { }
+
+  jobPosting: any
+
+  jobPostingForm = this.fb.group({
+    title : ['',Validators.required],
+    department: ['',Validators.required],
+    location : ['',Validators.required],
+    responsibilities : ['',Validators.required],
+    qualifications:['',Validators.required],
+    applicationDeadline:['',Validators.required]
+  })
+
+  submitJobPosting(){
+    this.jobPosting = this.jobPostingForm.value
+    console.log(this.jobPosting)
+    this.jb.createJobPosition(this.jobPosting).subscribe(
+      ()=> {
+        // this.router.navigate(['/'])
+        alert("Submitted")
+      }
+    )
+  }
+
+
+  ngOnInit(): void {
+  }
+
+}

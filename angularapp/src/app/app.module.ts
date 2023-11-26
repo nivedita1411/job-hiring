@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobApplicationsComponent } from './job-applications/job-applications.component';
 import { ViewJobApplicationsComponent } from './view-job-applications/view-job-applications.component';
 import { ViewJobPostingsComponent } from './view-job-postings/view-job-postings.component';
+import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ViewJobPostingsComponent } from './view-job-postings/view-job-postings.
     JobPostingFormComponent,
     JobApplicationsComponent,
     ViewJobApplicationsComponent,
-    ViewJobPostingsComponent
+    ViewJobPostingsComponent,
+    NavigationMenuComponent
   ],
   imports: [
     BrowserModule,

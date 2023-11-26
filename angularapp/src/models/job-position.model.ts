@@ -9,5 +9,5 @@ export interface JobPosition {
     qualifications:string
     isClosed:boolean;
     applicationDeadline:Date;
-    applications:JobApplication[];
+    // applications:JobApplication[];
 }

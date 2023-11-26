@@ -6,5 +6,5 @@ export interface JobApplication {
     applicantName:string;
     status:string;
 
-    jobPosition: JobPosition;
+    // jobPosition: JobPosition;
 }

@@ -23,11 +23,14 @@ export class JobPostingFormComponent implements OnInit {
     applicationDeadline:['']
   })
 
-  onSubmit(){
+  submitJobPosting(){
     this.formData = this.createForm.value
-    this.jb.subscribe(data => (
-      ()
-    ))
+    console.log(this.formData)
+    this.jb.createJobPosition(this.formData).subscribe(
+      ()=> {
+        // this.router.navigate(['/'])
+      }
+    )
   }
 
 

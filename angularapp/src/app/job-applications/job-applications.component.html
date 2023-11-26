@@ -1,10 +1,11 @@
 <!-- <p>job-applications works!</p> -->
 
-<form [formGroup]="jobApplicationForm" (ngSubmit)="applyForJob()">
-    <select *ngFor="let m of jobPositionId" id="obPositionId">
-        <option value="1" >Software Developer</option> 
-        <option value="2" >Data Analyst</option>   
+<!-- <form [formGroup]="jobApplicationForm" (ngSubmit)="applyForJob()">
+    <select id="jobPositionId" for="jobPositionId" formControlName="jobPositionId" required>
+        <option *ngFor="let m of jobPositions" [value]="m.id">{{m.title}} </option> 
+        
     </select>
-    <label for="applicantName">Applicant Name</label>
-    <input id="">
-</form>
+    <input type="text" id="applicantName" required formControlName="applicantName">
+
+    <button type="submit">Submit</button> 
+</form> -->

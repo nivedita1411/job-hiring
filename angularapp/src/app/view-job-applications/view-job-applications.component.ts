@@ -12,11 +12,16 @@ export class ViewJobApplicationsComponent implements OnInit {
 
   constructor(private jb:JobService) { }
 
-  applications : any[] = []
+  jobApplications : any[] = []
   loadJobApplications()
   {
-    this.jb.getJobApplications().subscribe(data => {this.applications.push(...data)})
+    this.jb.getJobApplications().subscribe((data:JobApplication[])=>{
+      this.jobApplications = data
+    })
   }
+
+  
+
   ngOnInit(): void {
   }
 

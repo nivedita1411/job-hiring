@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobApplicationsComponent } from './job-applications/job-applications.component';
 import { ViewJobApplicationsComponent } from './view-job-applications/view-job-applications.component';
+import { ViewJobPostingsComponent } from './view-job-postings/view-job-postings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobPostingFormComponent,
     JobApplicationsComponent,
-    ViewJobApplicationsComponent
+    ViewJobApplicationsComponent,
+    ViewJobPostingsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class JobApplicationsComponent implements OnInit {
 
   constructor(private jb:JobService, private fb:FormBuilder) { }
 
-  // jobApplicationData : any
+  jobApplicationData : any
   jobPositions : JobPosition[] = []
 
   jobApplicationForm = this.fb.group({
@@ -21,16 +21,16 @@ export class JobApplicationsComponent implements OnInit {
     // status : ['pending']
   })
 
-  applyForJob(formData : FormGroup)
+  applyForJob()
   {
 
-    if(formData.valid)
+    if(this.jobApplicationData.valid)
     {
-      // this.jobApplicationData = this.jobApplicationForm.value
+      this.jobApplicationData = this.jobApplicationForm.value
       // console.log(this.jobApplicationData)
-      this.jb.applyForJob(formData.value).subscribe(
+      this.jb.applyForJob(this.jobApplicationData).subscribe(
         ()=> {
-
+          alert('Applied!')
         }
       )
     }

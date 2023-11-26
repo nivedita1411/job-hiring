@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../services/job.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobPosition } from 'src/models/job-position.model';
 
 @Component({
@@ -12,7 +12,7 @@ export class JobApplicationsComponent implements OnInit {
 
   constructor(private jb:JobService, private fb:FormBuilder) { }
 
-  jobApplicationData : any
+  // jobApplicationData : any
   jobPositions : JobPosition[] = []
 
   jobApplicationForm = this.fb.group({
@@ -21,14 +21,14 @@ export class JobApplicationsComponent implements OnInit {
     // status : ['pending']
   })
 
-  applyForJob()
+  applyForJob(formData : FormGroup)
   {
 
-    if(this.jobApplicationData.valid)
+    if(formData.valid)
     {
-      this.jobApplicationData = this.jobApplicationForm.value
-      console.log(this.jobApplicationData)
-      this.jb.applyForJob(this.jobApplicationData).subscribe(
+      // this.jobApplicationData = this.jobApplicationForm.value
+      // console.log(this.jobApplicationData)
+      this.jb.applyForJob(formData.value).subscribe(
         ()=> {
 
         }
